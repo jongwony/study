@@ -15,18 +15,13 @@ npm run lint
 # build
 npm run build
 
-# navigate into the build output directory
-cd dist
-
 # if you are deploying to a custom domain
-echo 'study.jongwony.com' > CNAME
+echo 'study.jongwony.com' > dist/CNAME
 
-# init
-git init
-git add -A
-git commit -m "$lastCommitMsg"
-
-# if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:jongwony/study.git master:gh-pages
-
-cd -
+# deploy dist work-tree
+git checkout --orphan gh-pages
+git --work-tree dist add --all
+git --work-tree dist commit -m "$lastCommitMsg"
+git push -f origin HEAD:gh-pages
+git checkout -f master
+git branch -D gh-pages
