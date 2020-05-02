@@ -6,6 +6,12 @@ set -e
 # last commit message
 lastCommitMsg=$(git log -1 --pretty=%B | cat)
 
+# install
+npm install
+
+# lint check
+npm run lint
+
 # build
 npm run build
 
