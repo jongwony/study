@@ -13,4 +13,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Deploy gh-pages
       run: |
+        git config user.name "jongwony" && git config user.email "lastone9182@gmail.com"
         sh deploy.sh
